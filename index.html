@@ -87,7 +87,7 @@
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Harvard University</span>
-            <span class="author-block"><sup>2</sup>Kempner Insitute</span>
+            <span class="author-block"><sup>2</sup>Kempner Institute</span>
             <span class="author-block"><sup>3</sup>Microsoft Research New England</span>
             <span class="author-block"><sup>4</sup>IAIFI MIT</span>
           </div>
@@ -147,15 +147,10 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <p>
-            Masked diffusion models (MDMs) have recently emerged as a promising alternative to autoregressive models over discrete domains. MDMs generate sequences in an any-order, parallel fashion, enabling fast inference and strong performance on non-causal tasks. However, a crucial limitation is that they do not support token insertions and are thus limited to fixed-length generations.
-          </p>
-          <p>  
-            To this end, we introduce Flexible Masked Diffusion Models (FlexMDMs), a discrete diffusion paradigm that simultaneously can model sequences of flexible length while provably retaining MDMs' flexibility of any-order inference. Grounded in an extension of the stochastic interpolant framework, FlexMDMs generate sequences by inserting mask tokens and unmasking them. Empirically, we show that FlexMDMs match MDMs in perplexity while modeling length statistics with much higher fidelity.
-          </p>
-          <p>
-            On a synthetic maze planning task, they achieve ≈60% higher success rate than MDM baselines. Finally, we show pretrained MDMs can easily be retrofitted into FlexMDMs: on 16 H100s, it takes only three days to fine-tune LLaDA-8B into a FlexMDM, achieving superior performance on math (GSM8K, 58%→67%) and code infilling performance (52%→65%)
-          </p>
+          <p> Masked Diffusion Models (MDM) have been a promising alternative to autoregressive models, with recent scaling-up efforts, e.g., LLaDA, Dream7B, Mercury, Gemini Diffusion. Despite these successes, they struggle to (1) model variable-length sequence distributions and (2) insert new tokens during generation. </p>
+          <p> FlexMDM addresses these issues: By baking in the ability to insert mask tokens, FlexMDM exhibits superior performance over masked diffusion in planning and reasoning tasks where length flexibility is crucial. </p>
+          <p> FlexMDM scales up to 8B parameters—we retrofit LLaDA, an 8B open-sourced pretrained MDM, and fine-tune it using 1000 H100 GPU hours. FlexMDM’s ability to insert new tokens in arbitrary positions enables better reasoning capabilities on real-world reasoning tasks such as
+math (GSM8K) and code infilling (Humaneval-infill). Compared to MDM, FlexMDM achieves superior performance on math (GSM8K, 58%→67%) and code infilling performance (52%→65%) </p>
         </div>
       </div>
     </div>
@@ -167,7 +162,7 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3">Modeling length is beneficial for generation</h2> 
     <div class="content has-text-justified">
-      Masked diffusion models assume a fixed-length generation window, yet languages are inherently variable-length. By baking in the ability to insert mask tokens, FlexMDM exhibits superior scaling behaviours over masked diffusion in planning and reasoning tasks where length flexibility is crucial.
+      Masked diffusion models assume a fixed-length generation window, yet languages are inherently variable-length. By incorporating the ability to insert mask tokens, FlexMDM exhibits superior scaling behavior over masked diffusion in planning and reasoning tasks where length flexibility is crucial.
     </div>
   <div class="container is-max-desktop">
     <div class="is-centered">
@@ -177,7 +172,7 @@
           <h2 class="is-4">Reasoning</h2>
           <img src="./static/images/reasoning.png" width="80%"/>
           <p>
-            We retrofit 8B parameters LLaDa model into FlexMDM using 1000 H100 GPU hours. By allowing the model to insert new tokens in arbitrary positions, FlexMDM exhibits better reasoning capbilities on real-world reasoning tasks such as coding and grade school mathematics.
+            We retrofit an 8B parameter LLaDA model into FlexMDM using 1000 H100 GPU hours. By allowing the model to insert new tokens in arbitrary positions, FlexMDM exhibits better reasoning capabilities on real-world reasoning tasks such as coding and grade school mathematics.
           </p>
         </div>
       <!--/ Reasoning. -->
@@ -239,9 +234,9 @@
                   type="video/mp4">
         </video>
         </div>
-        <p> The modeling of the method relies on joint interpolant, an extension of the stochastic interpolant. In essence, the interpolant framework facilites the construction of generative model by defining a colleciton of time-indexed random variables that govern the marginal probability of the generation at time t and describe the mathematical quantites required for generation. </p>
+        <p> The modeling of the method relies on joint interpolants, an extension of the stochastic interpolant. In essence, the interpolant framework facilitates the construction of generative models by defining a collection of time-indexed random variables that govern the marginal probability of the generation at time t and describe the mathematical quantities required for generation. </p>
 
-        <p> In the context of FlexMDM, we bridge a betweem point mass at an empty sequence to data distribution $p_1$. The intermediate distribution follows the distribution of $x_t$, which we define per dimension by sampling an insertion time $T_1$ and unmasking time $T_2$ : </p>
+        <p> In the context of FlexMDM, we bridge between a point mass at an empty sequence and data distribution $p_1$. The intermediate distribution follows the distribution of $x_t$, which we define per dimension by sampling an insertion time $T_1$ and unmasking time $T_2$ : </p>
         $$
           \quad T_2^i \sim \mathbf{1}_{\{t \ge T_1^i\}}\frac{\dot{\beta_t}}{1-\beta_{T_1}} \; dt, \quad  x_t^i = \begin{cases}
         \text{(empty)}, & 0 < t < T_1^i \\
@@ -255,7 +250,7 @@
         $$
             s_t \colon= \{i \in \{0,\dots,\mathrm{len}(x_1)-1\} \mid T_1^i \le t\},
         $$
-        which is the set of indices that have been inserted by time $t$. Jointly with $x_t$, they characterise the quantities needed to define the inference procedure:
+        which is the set of indices that have been inserted by time $t$. Jointly with $x_t$, they characterize the quantities needed to define the inference procedure:
         <ul style="margin-left: 0; padding-left: 40px; margin-top: 20px;">
         <li style="margin-bottom: 15px;">
           <strong style="color: #0066cc;">Unmasking posterior</strong> (modeled by <span style="color: #0066cc;">$f_\theta(x,t)[i] \in \Delta(\Sigma)$</span>): for each index $i$ that $x^i=\mathbf{m}$, the posterior distribution over the underlying clean token.
@@ -345,14 +340,11 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@@misc{flexmdm2025,
-      title={Any-Order Flexible Length Masked Diffusion}, 
-      author={Jaeyeon Kim and Lee Cheuk-Kit and Carles Domingo-Enrich and Yilun Du and Sham Kakade and Timothy Ngotiaoco and Sitan Chen and Michael Albergo},
-      year={2025},
-      eprint={2509.01025},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2509.01025}, 
+    <pre><code>@article{kim2025any,
+  title={Any-Order Flexible Length Masked Diffusion},
+  author={Kim, Jaeyeon and Cheuk-Kit, Lee and Domingo-Enrich, Carles and Du, Yilun and Kakade, Sham and Ngotiaoco, Timothy and Chen, Sitan and Albergo, Michael},
+  journal={arXiv preprint arXiv:2509.01025},
+  year={2025}
 }</code></pre>
   </div>
 </section>
