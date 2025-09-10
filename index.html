@@ -6,10 +6,22 @@
         content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
   <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
+  <title>Flexible-Length Any-Order Masked Diffusion</title>
+
+  <!-- MathJax for LaTeX rendering -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+    
+  </script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -42,85 +54,52 @@
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav>
-
-
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
+          <h1 class="title is-1 publication-title">Any-Order Flexible Length Masked Diffusion</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
+              <a href="https://jaeyeonkim01.github.io">Jaeyeon Kim</a><sup>1,*</sup>,</span>
             <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
+              <a href="https://brianlck.github.io">Lee Cheuk-Kit</a><sup>1,2,*</sup>,</span>
             <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
+              <a href="https://cdenrich.github.io">Carles Domingo-Enrich</a><sup>3</sup>,
             </span>
             <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
+              <a href="https://yilundu.github.io">Yilun Du</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
+              <a href="https://shamulent.github.io">Sham Kakade</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
+              <a href="https://kempnerinstitute.harvard.edu/people/our-people/timothy-ngotiaoco/">Timothy Ngotiaoco</a><sup>1,2</sup>,
             </span>
             <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
+              <a href="https://sitanchen.com">Sitan Chen</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="http://malbergo.me">Michael Albergo</a><sup>1,2,4</sup>
             </span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
+            <span class="author-block"><sup>1</sup>Harvard University</span>
+            <span class="author-block"><sup>2</sup>Kempner Insitute</span>
+            <span class="author-block"><sup>3</sup>Microsoft Research New England</span>
+            <span class="author-block"><sup>4</sup>IAIFI MIT</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a href="https://arxiv.org/abs/2509.01025"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -128,28 +107,9 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <!-- Video Link. -->
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href="https://github.com/brianlck/interpretable-flow"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -157,15 +117,7 @@
                   <span>Code</span>
                   </a>
               </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
+              
             </div>
 
           </div>
@@ -178,73 +130,10 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
+      <img id="teaser" src="./static/videos/flexmdm.gif" style="width: 100%; margin-top: -50px; height: auto;" />
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
+        <span class="dnerf"> FlexMDM </span> generates variable-length sequences by inserting masks and unmasking them arbitrarily
       </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -258,197 +147,211 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
+            Masked diffusion models (MDMs) have recently emerged as a promising alternative to autoregressive models over discrete domains. MDMs generate sequences in an any-order, parallel fashion, enabling fast inference and strong performance on non-causal tasks. However, a crucial limitation is that they do not support token insertions and are thus limited to fixed-length generations.
+          </p>
+          <p>  
+            To this end, we introduce Flexible Masked Diffusion Models (FlexMDMs), a discrete diffusion paradigm that simultaneously can model sequences of flexible length while provably retaining MDMs' flexibility of any-order inference. Grounded in an extension of the stochastic interpolant framework, FlexMDMs generate sequences by inserting mask tokens and unmasking them. Empirically, we show that FlexMDMs match MDMs in perplexity while modeling length statistics with much higher fidelity.
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            On a synthetic maze planning task, they achieve ≈60% higher success rate than MDM baselines. Finally, we show pretrained MDMs can easily be retrofitted into FlexMDMs: on 16 H100s, it takes only three days to fine-tune LLaDA-8B into a FlexMDM, achieving superior performance on math (GSM8K, 58%→67%) and code infilling performance (52%→65%)
           </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
-  </div>
 </section>
 
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
+    <h2 class="title is-3">Modeling length is beneficial for generation</h2> 
+    <div class="content has-text-justified">
+      Masked diffusion models assume a fixed-length generation window, yet languages are inherently variable-length. By baking in the ability to insert mask tokens, FlexMDM exhibits superior scaling behaviours over masked diffusion in planning and reasoning tasks where length flexibility is crucial. 
     </div>
-    <!--/ Matting. -->
+  <div class="container is-max-desktop">
+    <div class="is-centered">
 
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
+      <!-- Reasoning. -->
         <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
+          <h2 class="is-4">Reasoning</h2>
+          <img src="./static/images/reasoning.png" width="80%"/>
           <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+            By allowing the model to insert new tokens in arbitrary positions, FlexMDM exhibits better reasoning capbilities.
           </p>
         </div>
+      <!--/ Reasoning. -->
+
+      <!-- Planning -->
+      <div class="content has-text-centered">
+        <h2 class="is-3">Planning</h2>
+        <div class="columns">
+          <div class="column is-half">
+            <img src="./static/images/subgoal.png" height="30%"/>
+          </div>
+          <div id="column is-half">
+            <table class="fancy-table" style="margin-top: 50px;">
+            <thead>
+            <tr>
+            <th>Difficulty</th>
+            <th>MDM</th>
+            <th>FlexMDM</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td>Easy</td>
+            <td>68.4%</td>
+            <td><strong>92.3%</strong></td>
+            </tr>
+            <tr>
+            <td>Medium</td>
+            <td>29.3%</td>
+            <td><strong>90.4%</strong></td>
+            </tr>
+            <tr>
+            <td>Hard</td>
+            <td>24.2%</td>
+            <td><strong>90.0%</strong></td>
+            </tr>
+            </tbody>
+            <caption>Table 1: FlexMDM outperforms MDM on the subgoal-style maze-planning task.</caption>
+            </table>
+            <p>
+              Trajectories in planning tasks are inherently variable-length. By allowing the model to insert new tokens in arbitrary positions, FlexMDM is able to generate more trajectories that pass through subgoals in a valid way.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Planning -->
       </div>
     </div>
-    <!--/ Concurrent Work. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+        <h2 class="title is-3">Modeling with Stochastic Interpolants</h2>
+      <div class="content container is-max-desktop">
+        <div class="has-text-centered" style="margin-bottom: 20px">
+        <video id="" autoplay controls muted loop playsinline width="80%">
+          <source src="./static/videos/FlexMDMInterpolant.mp4"
+                  type="video/mp4">
+        </video>
+        </div>
+        <p> The modeling of the method relies on joint interpolant, an extension of the stochastic interpolant. In essence, the interpolant framework facilites the construction of generative model by defining a colleciton of time-indexed random variables that govern the marginal probability of the generation at time t and describe the mathematical quantites required for generation. </p>
+
+        <p> In the context of FlexMDM, we bridge a betweem point mass at an empty sequence to data distribution $p_1$. The intermediate distribution follows the distribution of $x_t$, which we define per dimension by sampling an insertion time $T_1$ and unmasking time $T_2$ : </p>
+        $$
+          \quad T_2^i \sim \mathbf{1}_{\{t \ge T_1^i\}}\frac{\dot{\beta_t}}{1-\beta_{T_1}} \; dt, \quad  x_t^i = \begin{cases}
+        \text{(empty)}, & 0 < t < T_1^i \\
+        \mathbf{m}, & T_1^i \leq t <  T_2^i \\
+        x_1^i, &   T_2^i \leq t \leq 1
+    \end{cases}
+        $$
+      </p>
+      <p>
+        This is augmented by an auxiliary variable defined in a way that is coupled with $x_t$:
+        $$
+            s_t \colon= \{i \in \{0,\dots,\mathrm{len}(x_1)-1\} \mid T_1^i \le t\},
+        $$
+        which is the set of indices that have been inserted by time $t$. Jointly with $x_t$, they characterise the quantities needed to define the inference procedure:
+        <ul style="margin-left: 0; padding-left: 40px; margin-top: 20px;">
+        <li style="margin-bottom: 15px;">
+          <strong style="color: #0066cc;">Unmasking posterior</strong> (modeled by <span style="color: #0066cc;">$f_\theta(x,t)[i] \in \Delta(\Sigma)$</span>): for each index $i$ that $x^i=\mathbf{m}$, the posterior distribution over the underlying clean token.
+          <br>
+          <span style="color: #0066cc;">$$f_\theta(x, t)[i, v] = \mathbb{P} (x_1^{s_t[i]} = v | x_t = x)$$</span>
+        </li>
+        <li style="margin-bottom: 15px;">
+          <strong style="color: #009900;">Insertion expectation</strong> (modeled by <span style="color: #009900;">$g_\theta(x,t)[i] \in \mathbb{R}_{\geq 0}$</span>): for all indices $i$ in $x$, the expected number of tokens that remain to be inserted in between $x^{i-1}$ and $x^{i}$.
+          <br>
+          <span style="color: #009900;">$$g_\theta(x, t)[i] = \mathbb{E}[s_t[i] - s_t[i-1] - 1 | x_t = x]$$</span>
+        </li>
+      </ul>
+      </p>
+      </div>
+      </div>
+    </section>
+
+<section class="section">
+  <div class="content container is-max-desktop">
+    <h2 class="title is-3">Variable Length Masked Diffusions: Inference</h2>
+    
+    <p>We outline two inference algorithms for FlexMDM: <strong style="color: #800080;">vanilla inference</strong> and <strong style="color: #800080;">adaptive inference</strong>.</p>
+    
+    <p><strong>Vanilla inference.</strong> We discretize the CTMC using trained neural networks $(f_\theta,g_\theta)$ with $\tau$-leaping. At each step, we simultaneously:</p>
+    
+    <ul style="margin-left: 20px;">
+      <li><strong style="color: #0066cc;">Unmasking:</strong> For each mask token, sample unmasking events according to unmasking intensities in the rate matrix.</li>
+      <li><strong style="color: #009900;">Insertion:</strong> Sample mask-token insertions from a Poisson distribution parameterized by the insertion rate.</li>
+    </ul>
+    
+    <p><strong>Adaptive inference.</strong> We can choose unmasking positions <strong style="color: #800080;">adaptively</strong>, prioritizing <strong style="color: #800080;">the most confident indices</strong> based on the model's unmasking posterior or semi-autoregressive rules. This substantially boosts performance.</p>
+    
+    <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #0066cc; margin: 20px 0;">
+      <p><strong>Key Result:</strong> Any sampling scheme that (i) unmasks arbitrary subsets but draws tokens from the ground-truth unmasking posterior and (ii) applies insertion CTMC governed by the ground-truth rate matrix samples from the target distribution $p_1$.</p>
+    </div>
+
+    This is summarized in the following pseudocode:
+
+    <div class="columns is-desktop" style="margin-top: 20px;">
+        <!-- Container for Subroutine 1 -->
+        <div class="column">
+            <h2 class="title is-4">Subroutine 1: VLMDM inference</h2>
+            <div class="font-code content">
+                <p><strong>Require:</strong> Learned functions ($f_{\theta}, g_{\theta}$)</p>
+                <p><strong>Require:</strong> Discretization $0 = t_1 < \dots < t_N = 1$</p>
+                <p><strong>Require:</strong> Insertion, Unmasking schedule $\alpha_t, \beta_t$</p>
+                <ol>
+                    <li><span>Initialize $X_{t_1} \leftarrow \epsilon$</span></li>
+                    <li><span><span class="keyword">for</span> k = 1 <span class="keyword">to</span> N &minus; 1</span></li>
+                    <li style="padding-left: 2em;"><span>$\tau \leftarrow t_{k+1} - t_k$</span></li>
+                    <li style="padding-left: 2em;"><span class="highlight">Invoke Subroutine 2 for unmasking</span></li>
+                    <li style="padding-left: 2em;"><span><span class="keyword">for</span> i <span class="keyword">in</span> [len($X_{t_k}$)]</span></li>
+                    <li style="padding-left: 4em;"><span>Set rate $r \leftarrow \alpha_{t_k} / (1 - \alpha_{t_k}) \cdot \tau$</span></li>
+                    <li style="padding-left: 4em;"><span>Sample $l \sim \text{Poi}(r \cdot g_{\theta}(X_{t_k}, t_k)[i])$</span></li>
+                    <li style="padding-left: 4em;"><span class="highlight">Insert $l$ masks between $X_{t_k}^{i-1}$ and $X_{t_k}^i$</span></li>
+                    <li><span><span class="keyword">return</span> $X_{t_N}$</span></li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Container for Subroutine 2 -->
+        <div class="column">
+            <h2 class="title is-4">Subroutine 2: Unmasking Step</h2>
+            <div class="font-code content">
+                <ol>
+                    <li><span><span class="keyword">if</span> <span class="highlight">vanilla inference</span> :</span></li>
+                    <li style="padding-left: 2em;"><span><span class="keyword">for</span> i &isin; {i | $X_{t_k}^i$ = m} and v &isin; &Sigma;</span></li>
+                    <li style="padding-left: 4em;"><span>Set rate $r \leftarrow \beta_{t_k} / (1 - \beta_{t_k}) \cdot \tau$</span></li>
+                    <li style="padding-left: 4em;"><span>$k_v \sim \text{Poi}(r \cdot f_{\theta}(X_{t_k}, t_k)[i, v])$</span></li>
+                    <li style="padding-left: 4em;"><span><span class="keyword">if</span> &exist;v such that $k_v = 1$</span></li>
+                    <li style="padding-left: 6em;"><span>Set $X_{t_k}^i \leftarrow v$</span></li>
+                    <li><span><span class="keyword">if</span> <span class="highlight">adaptive inference</span> :</span></li>
+                    <li style="padding-left: 2em;"><span>Select K (the size of |S'|)</span></li>
+                    <li style="padding-left: 2em;"><span><span class="keyword">for</span> i &isin; {i | $X_{t_k}^i$ = m}</span></li>
+                    <li style="padding-left: 4em;"><span>Compute confidence $C^i$</span></li>
+                    <li style="padding-left: 2em;"><span><span class="keyword">for</span> i <span class="keyword">in</span> argmaxK(C)</span></li>
+                    <li style="padding-left: 4em;"><span>$X_{t_k}^i \sim \text{Cat}(f_{\theta}(X_{t_k}, t_k)[i])$</span></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    </div>
 
   </div>
 </section>
 
-
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+    <pre><code>@@misc{flexmdm2025,
+      title={Any-Order Flexible Length Masked Diffusion}, 
+      author={Jaeyeon Kim and Lee Cheuk-Kit and Carles Domingo-Enrich and Yilun Du and Sham Kakade and Timothy Ngotiaoco and Sitan Chen and Michael Albergo},
+      year={2025},
+      eprint={2509.01025},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2509.01025}, 
 }</code></pre>
   </div>
 </section>
@@ -474,11 +377,8 @@
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
           <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            This webpage is adapted from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
           </p>
         </div>
       </div>
