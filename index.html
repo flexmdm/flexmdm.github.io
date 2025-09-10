@@ -166,7 +166,7 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3">Modeling length is beneficial for generation</h2> 
     <div class="content has-text-justified">
-      Masked diffusion models assume a fixed-length generation window, yet languages are inherently variable-length. By baking in the ability to insert mask tokens, FlexMDM exhibits superior scaling behaviours over masked diffusion in planning and reasoning tasks where length flexibility is crucial. 
+      Masked diffusion models assume a fixed-length generation window, yet languages are inherently variable-length. By baking in the ability to insert mask tokens, FlexMDM exhibits superior scaling behaviours over masked diffusion in planning and reasoning tasks where length flexibility is crucial.
     </div>
   <div class="container is-max-desktop">
     <div class="is-centered">
@@ -176,7 +176,7 @@
           <h2 class="is-4">Reasoning</h2>
           <img src="./static/images/reasoning.png" width="80%"/>
           <p>
-            By allowing the model to insert new tokens in arbitrary positions, FlexMDM exhibits better reasoning capbilities.
+            We retrofit 8B parameters LLaDa model into FlexMDM using 1000 H100 GPU hours. By allowing the model to insert new tokens in arbitrary positions, FlexMDM exhibits better reasoning capbilities on real-world reasoning tasks such as coding and grade school mathematics.
           </p>
         </div>
       <!--/ Reasoning. -->
@@ -281,7 +281,7 @@
     <p><strong>Vanilla inference.</strong> We discretize the CTMC using trained neural networks $(f_\theta,g_\theta)$ with $\tau$-leaping. At each step, we simultaneously:</p>
     
     <ul style="margin-left: 20px;">
-      <li><strong style="color: #0066cc;">Unmasking:</strong> For each mask token, sample unmasking events according to unmasking intensities in the rate matrix.</li>
+      <li><strong style="color: #0066cc;">Unmasking:</strong> For each mask token, sample unmasking events according to a rate matrix that governs evolution of the process.</li>
       <li><strong style="color: #009900;">Insertion:</strong> Sample mask-token insertions from a Poisson distribution parameterized by the insertion rate.</li>
     </ul>
     
